@@ -1,18 +1,23 @@
 {
   "name": "docs",
   "version": "1.0.0",
-  "description": "",
+  "description": "Docs based on VitePress",
   "main": "index.js",
   "scripts": {
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.11.1",
   "devDependencies": {
+    "@types/node": "^22.15.30",
+    "fast-glob": "^3.3.3",
+    "markdown-it-mathjax3": "^4.3.2",
+    "typescript": "^5.8.3",
+    "vite-plugin-vitepress-auto-nav": "^3.0.0",
     "vitepress": "^1.6.3"
   }
 }

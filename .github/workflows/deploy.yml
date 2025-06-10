@@ -38,7 +38,7 @@ jobs:
       - name: 安装Node
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20.1.0
           cache: pnpm
       - name: 启用Github Pages并读取文档元数据
         uses: actions/configure-pages@v3
@@ -47,7 +47,7 @@ jobs:
       - name: 打包
         run: pnpm build
       - name: 上传项目
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v4
         with:
           path: .vitepress/dist
 

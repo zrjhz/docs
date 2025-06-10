@@ -1,5 +1,5 @@
 <template>
-  <VPHero name="XaviDocs" text="个人技术文档" :image="image" :actions="actions" />
+  <VPHero name="zrjhzDocs" text="个人技术文档" :image="image" :actions="actions" />
   <VPFeatures :features="pages" />
 </template>
 

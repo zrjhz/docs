@@ -3,6 +3,7 @@ import AutoNav from 'vite-plugin-vitepress-auto-nav';
 
 export default defineConfig({
   vite: {
+    base: './',
     plugins: [AutoNav()],
   },
   description: '个人前端技术文档',

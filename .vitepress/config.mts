@@ -3,7 +3,6 @@ import AutoNav from 'vite-plugin-vitepress-auto-nav';
 
 export default defineConfig({
   vite: {
-    base: './',
     plugins: [AutoNav()],
   },
   description: '个人前端技术文档',
@@ -17,7 +16,6 @@ export default defineConfig({
   themeConfig: {
     siteTitle: 'zrjhz的技术文档',
     socialLinks: [{ icon: 'github', link: 'https://github.com/zrjhz/docs' }],
-    outline: 'deep',
     outlineTitle: '目录',
     editLink: {
       pattern: 'https://github.com/zrjhz/docs/edit/master/:path',

@@ -2,6 +2,7 @@ import { defineConfig } from 'vitepress';
 import AutoNav from 'vite-plugin-vitepress-auto-nav';
 
 export default defineConfig({
+  base: '/docs/',
   vite: {
     plugins: [AutoNav()],
   },

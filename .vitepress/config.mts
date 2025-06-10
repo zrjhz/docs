@@ -3,7 +3,6 @@ import AutoNav from 'vite-plugin-vitepress-auto-nav';
 
 export default defineConfig({
   vite: {
-    base: './',
     plugins: [AutoNav()],
   },
   description: '个人前端技术文档',
@@ -22,6 +21,18 @@ export default defineConfig({
       pattern: 'https://github.com/zrjhz/docs/edit/master/:path',
       text: '修改本文',
     },
+    nav: [
+      {
+        text: '前端',
+        link: '/前端/JavaScript/原型到原型链',
+        activeMatch: '/前端/',
+      },
+      {
+        text: '算法',
+        link: '/算法/Leetcode/3442.奇偶频次间的最大差值 I',
+        activeMatch: '/算法/',
+      },
+    ],
     docFooter: {
       prev: '上一篇',
       next: '下一篇',

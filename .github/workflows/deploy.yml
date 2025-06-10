@@ -46,15 +46,6 @@ jobs:
         run: pnpm install
       - name: 打包
         run: pnpm build
-
-  # 部署流程
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
       - name: 上传项目
         uses: actions/upload-pages-artifact@v3
         with:
@@ -62,3 +53,4 @@ jobs:
       - name: 部署到 GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v3
+

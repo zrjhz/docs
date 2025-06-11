@@ -12,7 +12,7 @@ export { data };
 // createContentLoader会默认忽略'**/node_modules/**', '**/dist/**'
 export default createContentLoader(
   [
-    '!(.vitepress|public|images|.guthub|components|snippets)/**/!(index|README).md',
+    '!(.vitepress|public|images|.github|components|snippets)/**/!(index|README).md',
   ],
   {
     includeSrc: true,
@@ -20,10 +20,11 @@ export default createContentLoader(
       const promises: Promise<any>[] = [];
 
       data.forEach(({ frontmatter, src, url }) => {
+        const projectUrl = 'content' + url;
         // 用页面的一级标题作为文章标题（因为sidebar中可能是精简的标题）
         let title =
           src?.match(/^\s*#\s+(.*)\s*$/m)?.[1] ||
-          basename(url).replace(extname(url), '');
+          basename(projectUrl).replace(extname(projectUrl), '');
 
         // 标题可能用到了变量，需要替换
         const regexp = /\{\{\s*\$frontmatter\.(\S+?)\s*\}\}/g;
@@ -37,7 +38,7 @@ export default createContentLoader(
         }
 
         // 链接去掉项目名
-        const link = normalize(url)
+        const link = normalize(projectUrl)
           .split(sep)
           .filter((item) => item)
           .join(sep);
@@ -67,7 +68,7 @@ export default createContentLoader(
               .replace(/\s/g, ' ')
               // 仅保留可能显示的部分，减小数据大小
               .slice(0, 200),
-            link,
+            link: url,
             // linkText 可以显示更新时间
             // linkText: new Date(fileTimeInfo[1]).toLocaleDateString(),
             // 存储时间信息用于排序
@@ -79,6 +80,8 @@ export default createContentLoader(
       });
 
       const pages = await Promise.all(promises);
+      console.log(pages);
+
       // 更新时间降序排列
       return pages.sort((a, b) => b.fileTimeInfo[1] - a.fileTimeInfo[1]);
       // 发布时间降序排列

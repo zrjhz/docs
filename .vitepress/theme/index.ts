@@ -1,10 +1,5 @@
-import type { Theme } from 'vitepress';
-import DefaultTheme from 'vitepress/theme';
+import Theme from 'vitepress/theme';
+import './vars.css';
 import './custom.css';
 
-export default {
-  ...DefaultTheme,
-  enhanceApp({ app, router, siteData }) {
-    DefaultTheme.enhanceApp({ app, router, siteData });
-  },
-} as Theme;
+export default Theme;

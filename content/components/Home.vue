@@ -1,15 +1,15 @@
 <template>
-  <VPHero name="zrjhzDocs" text="个人技术文档" :image="image" :actions="actions" />
+  <VPHero name="zrjhzDocs" text="个人技术文档" :actions="actions" :image="image"/>
   <VPFeatures :features="pages" />
 </template>
 
 <script setup lang="ts">
 import VPHero from 'vitepress/dist/client/theme-default/components/VPHero.vue'
 import VPFeatures from 'vitepress/dist/client/theme-default/components/VPFeatures.vue'
-import { data as pages } from '../.vitepress/create.data'
+import { data as pages } from '../../.vitepress/create.data'
 
 const tagline = `累计更新${pages.length}篇文章`
-const image = { light: '/pic1.svg', dark: '/pic2.svg' }
+const image = { light: 'assert/mew.png', dark: 'assert/ooh.png' }
 const actions = [
   {
     text: '随便逛逛',

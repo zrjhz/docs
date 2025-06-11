@@ -17,6 +17,8 @@ export default createContentLoader(
   {
     includeSrc: true,
     async transform(data) {
+      console.log(1);
+      
       const promises: Promise<any>[] = [];
 
       data.forEach(({ frontmatter, src, url }) => {
@@ -80,7 +82,6 @@ export default createContentLoader(
       });
 
       const pages = await Promise.all(promises);
-      console.log(pages);
 
       // 更新时间降序排列
       return pages.sort((a, b) => b.fileTimeInfo[1] - a.fileTimeInfo[1]);

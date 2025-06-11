@@ -23,7 +23,7 @@ function randomPage(): string {
 }
 </script>
 
-<style>
+<style scoped>
 .details {
   overflow: hidden;
   text-overflow: ellipsis;

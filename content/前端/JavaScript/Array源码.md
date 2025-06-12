@@ -8,13 +8,15 @@
 
 用 JS 来模拟实现，核心逻辑如下：
 
+::: code-group
+
 ```js
 Array.prototype.map = function(callbackfn, thisArg) {
   // 异常处理
   if (this == null) {
   	throw new TypeError("Cannot read property 'map' of null or undefined");
   }
-  // Step 1. 转成数组对象，有 length 属性和 K-V 键值对
+  // Step 1. 转成数组对象，有 length 属性和 K-V 键值对，因为传入的可能是伪数组（argument）
   let O = Object(this)
   // Step 2. 无符号右移 0 位，左侧用 0 填充，结果非负
   let len = O.length >>> 0
@@ -50,6 +52,40 @@ Array.prototype.map = function(callbackfn, thisArg) {
 
 // 代码亲测已通过
 ```
+
+```ts
+export {};
+
+// 1. 给 Array 添加声明（扩展内置接口）
+declare global {
+  interface Array<T> {
+    myMap<U>(
+      callback: (value: T, index: number, array: T[]) => U,
+      thisArg?: any
+    ): U[];
+  }
+}
+
+// 2. 实现 myMap 方法
+Array.prototype.myMap = function <T, U>(
+  callback: (value: T, index: number, array: T[]) => U,
+  thisArg?: any
+): U[] {
+  const result: U[] = [];
+
+  // 遍历数组，手动绑定 thisArg 到 callback 上（兼容原生 map）
+  for (let i = 0; i < this.length; i++) {
+    // 检查数组槽是否存在（模拟稀疏数组的行为）
+    if (i in this) {
+      result.push(callback.call(thisArg, this[i], i, this));
+    }
+  }
+
+  return result;
+};
+```
+
+:::
 
 看完代码其实挺简单，核心就是在一个 `while` 循环中执行 `callbackfn`，并传入 4 个参数，回调函数具体的执行逻辑这里并不关心，只需要拿到返回结果并赋值给新数组就好了。
 
@@ -124,6 +160,7 @@ console.log(result)
 
 根据[【进阶 3-3 期】](https://muyiy.cn/blog/3/3.3.html) 中对于 call 的解读，传入 undefined 时，非严格模式下指向 Window，严格模式下为 undefined。记住这时候回调函数不能用箭头函数，因为箭头函数是没有自己的 this 的。
 :::code-group
+
 ```js
 // 1、传入 thisArg 但使用箭头函数
 let name = 'Muyiy'

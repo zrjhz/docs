@@ -1,6 +1,6 @@
 # Array源码
 
-## map
+## map 
 
 完整的结构是 `Array.prototype.map(callbackfn[, thisArg])`，`map` 函数接收两个参数，一个是必填项回调函数，另一个是可选项 callbackfn 函数执行时的 this 值。
 

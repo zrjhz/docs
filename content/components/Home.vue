@@ -1,6 +1,6 @@
 <template>
   <VPHero name="zrjhzDocs" text="个人技术文档" :actions="actions" :image="image"/>
-  <VPFeatures :features="pages" />
+  <!-- <VPFeatures :features="pages" /> -->
 </template>
 
 <script setup lang="ts">

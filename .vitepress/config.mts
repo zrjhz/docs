@@ -5,7 +5,7 @@ import { searchOptions, markdown, socialLinks } from './configs';
 export default defineConfig({
   base: '/docs/',
   lang: 'zh-Hans',
-  title: "zrjhzDocs",
+  title: 'zrjhzDocs',
   description: '个人前端技术文档',
   srcDir: 'content',
   lastUpdated: true,
@@ -18,11 +18,13 @@ export default defineConfig({
   vue: {},
 
   themeConfig: {
-    siteTitle:'zrjhzDocs',
+    siteTitle: 'zrjhzDocs',
     search: { provider: 'local', options: searchOptions },
     socialLinks,
-    outlineTitle: '页面导航',
-
+    outline: {
+      level: [2, 3],
+      label: '页面导航',
+    },
     lastUpdated: {
       text: '最后更新于',
       formatOptions: {
